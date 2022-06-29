@@ -1,0 +1,33 @@
+<h2>Reactive Form</h2>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
+  <div class="mb-3">
+    <label class="form-label" for="uidInput">UID</label>
+    <input
+      id="uidInput"
+      class="form-control"
+      type="text"
+      placeholder="UID"
+      name="uid"
+      formControlName="uid"
+    />
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="usernameInput">Username</label>
+    <input
+      id="usernameInput"
+      class="form-control"
+      type="text"
+      placeholder="Username"
+      name="username"
+      formControlName="username"
+    />
+  </div>
+
+  <button type="submit" class="btn btn-primary m-2">Submit</button>
+  <button type="button" (click)="resetForm()" class="btn btn-info m-2">Reset</button>
+  <button type="button" (click)="ereaseForm()" class="btn btn-secondary m-2">Erease</button>
+  <button type="button" (click)="getValue()" class="btn btn-secondary m-2">Get</button>
+  <button type="button" (click)="setValue()" class="btn btn-secondary m-2">Set</button>
+  <button type="button" (click)="patchValue()" class="btn btn-secondary m-2">Patch</button>
+</form>

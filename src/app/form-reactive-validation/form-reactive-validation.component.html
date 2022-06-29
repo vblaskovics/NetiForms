@@ -1,0 +1,19 @@
+<h2>Reactive Form</h2>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
+  <div class="mb-3">
+    <label class="form-label" for="uidInput">UID</label>
+    <input
+      id="uidInput"
+      class="form-control"
+      [class.error]="uid.touched && uid.invalid"
+      type="text"
+      placeholder="UID"
+      name="uid"
+      formControlName="uid"
+    />
+    <p *ngIf="uid.touched && uid.hasError('required')" class="is-error">UID is required!</p>
+  </div>
+
+  <button type="submit" [disabled]="myForm.invalid" class="btn btn-primary m-2">Submit</button>
+</form>
