@@ -1,5 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+
+function uidValidator(control: FormControl): { [s: string]: boolean } {
+  if (!control.value.match(/^U-/)) {
+    return { invalidUid: true };
+  }
+  return {};
+}
 
 @Component({
   selector: 'app-form-reactive-validation',
@@ -10,7 +22,11 @@ export class FormReactiveValidationComponent implements OnInit {
   myForm: FormGroup;
   constructor(fb: FormBuilder) {
     this.myForm = fb.group({
-      uid: ['', Validators.required],
+      uid: ['', [Validators.required, uidValidator]],
+    });
+
+    this.myForm.valueChanges.subscribe(() => {
+      console.log(this.myForm.value);
     });
   }
 

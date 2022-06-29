@@ -1,0 +1,12 @@
+.is-error {
+  color: red;
+}
+
+input.error {
+  background-color: lightpink;
+  border-color: red;
+}
+
+input.error:focus {
+  box-shadow: 0 0 0 0.25rem rgb(215 13 13 / 25%);
+}

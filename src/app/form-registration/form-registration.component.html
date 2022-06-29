@@ -1,0 +1,206 @@
+<h2>Sign up</h2>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
+  <!-- FIRST NAME -->
+  <div class="mb-3">
+    <label class="form-label" for="firstnameInput">First name</label>
+    <input
+      class="form-control"
+      [class.error]="
+        getControl('firstname').invalid && getControl('firstname').touched
+      "
+      type="text"
+      id="firstnameInput"
+      formControlName="firstname"
+    />
+    <div
+      *ngIf="
+        getControl('firstname').hasError('invalidName') &&
+        getControl('firstname').touched
+      "
+      class="is-error"
+    >
+      Name must start with uppercase letter!
+    </div>
+  </div>
+  <!-- LAST NAME -->
+  <div class="mb-3">
+    <label class="form-label" for="lastnameInput">Last name</label>
+    <input
+      class="form-control"
+      [class.error]="
+        getControl('lastname').invalid && getControl('lastname').touched
+      "
+      type="text"
+      id="lastnameInput"
+      formControlName="lastname"
+    />
+    <div
+      *ngIf="
+        getControl('lastname').hasError('invalidName') &&
+        getControl('lastname').touched
+      "
+      class="is-error"
+    >
+      Name must start with uppercase letter!
+    </div>
+  </div>
+  <!-- BIRTHDATE -->
+  <div class="mb-3">
+    <label class="form-label" for="birthdateInput">Birth date</label>
+    <input
+      class="form-control"
+      [class.error]="
+        getControl('birthdate').invalid && getControl('birthdate').touched
+      "
+      type="date"
+      id="birthdateInput"
+      formControlName="birthdate"
+    />
+    <div
+      *ngIf="
+        getControl('birthdate').hasError('invalidDate') &&
+        getControl('birthdate').touched
+      "
+      class="is-error"
+    >
+      Invalid date
+    </div>
+  </div>
+  <!-- EMAIL -->
+  <div class="mb-3">
+    <label class="form-label" for="emailInput">Email</label>
+    <input
+      class="form-control"
+      type="text"
+      id="emailInput"
+      formControlName="email"
+      [class.error]="getControl('email').invalid && getControl('email').touched"
+    />
+    <div
+      *ngIf="
+        getControl('email').hasError('required') && getControl('email').touched
+      "
+      class="is-error"
+    >
+      Email is required
+    </div>
+    <div
+      *ngIf="
+        getControl('email').hasError('invalidEmail') &&
+        getControl('email').touched
+      "
+      class="is-error"
+    >
+      Email is invalid
+    </div>
+  </div>
+  <!-- PASSWORD -->
+  <div class="mb-3">
+    <label class="form-label" for="passwordInput">Password</label>
+    <input
+      class="form-control"
+      [class.error]="
+        getControl('password').invalid && getControl('password').touched
+      "
+      type="password"
+      id="passwordInput"
+      formControlName="password"
+    />
+    <div
+      *ngIf="
+        getControl('password').hasError('required') &&
+        getControl('password').touched
+      "
+      class="is-error"
+    >
+      Password is required
+    </div>
+    <div
+      *ngIf="
+        getControl('password').hasError('invalidPassword') &&
+        getControl('password').touched
+      "
+      class="is-error"
+    >
+      Passwords should be the same!
+    </div>
+    <div
+      *ngIf="
+        getControl('password').hasError('noNumberInPassword') &&
+        getControl('password').touched
+      "
+      class="is-error"
+    >
+      Password should contain number!
+    </div>
+    <div
+      *ngIf="
+        getControl('password').hasError('minLengthPassword') &&
+        getControl('password').touched
+      "
+      class="is-error"
+    >
+      Password must contain at least 8 characters!
+    </div>
+  </div>
+  <!-- PASSWORD AGAIN -->
+  <div class="mb-3">
+    <label class="form-label" for="passwordreInput">Password again</label>
+    <input
+      class="form-control"
+      [class.error]="
+        getControl('passwordre').invalid && getControl('passwordre').touched
+      "
+      type="password"
+      id="passwordreInput"
+      formControlName="passwordre"
+    />
+    <div
+      *ngIf="
+        getControl('passwordre').hasError('required') &&
+        getControl('passwordre').touched
+      "
+      class="is-error"
+    >
+      Password is required
+    </div>
+    <div
+      *ngIf="
+        getControl('passwordre').hasError('invalidPassword') &&
+        getControl('passwordre').touched
+      "
+      class="is-error"
+    >
+      Passwords should be the same!
+    </div>
+    <div
+      *ngIf="
+        getControl('passwordre').hasError('noNumberInPassword') &&
+        getControl('passwordre').touched
+      "
+      class="is-error"
+    >
+      Passwords should contain number!
+    </div>
+  </div>
+  <!-- TERMS -->
+  <div class="mb-3">
+    <label class="form-label" for="termsInput">Agree to Terms and Conditions</label>
+    <input
+      [class.error]="getControl('terms').invalid && getControl('terms').touched"
+      type="checkbox"
+      id="termsInput"
+      formControlName="terms"
+    />
+    <div
+      *ngIf="getControl('terms').invalid && getControl('terms').touched"
+      class="is-error"
+    >
+      Required!
+    </div>
+  </div>
+
+  <button class="btn btn-primary" [disabled]="myForm.invalid" type="submit">
+    Submit
+  </button>
+</form>

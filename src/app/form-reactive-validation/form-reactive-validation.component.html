@@ -2,7 +2,7 @@
 
 <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
   <div class="mb-3">
-    <label class="form-label" for="uidInput">UID</label>
+    <label class="form-label" for="uidInput">UID*</label>
     <input
       id="uidInput"
       class="form-control"
@@ -13,6 +13,7 @@
       formControlName="uid"
     />
     <p *ngIf="uid.touched && uid.hasError('required')" class="is-error">UID is required!</p>
+    <p *ngIf="uid.touched && uid.hasError('invalidUid')" class="is-error">UID must start with "U-"!</p>
   </div>
 
   <button type="submit" [disabled]="myForm.invalid" class="btn btn-primary m-2">Submit</button>
