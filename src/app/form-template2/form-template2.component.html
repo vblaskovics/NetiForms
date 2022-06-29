@@ -1,0 +1,15 @@
+<h2>Form with template 2</h2>
+
+<form #f2="ngForm" (ngSubmit)="onSubmit(f2.value)">
+  <div class="mb-3">
+    <label class="form-label" for="usernameInput">User name</label>
+    <input id="usernameInput" class="form-control" type="text" placeholder="Username" name="username" ngModel>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label" for="passwordInput">Password</label>
+    <input id="passwordInput" class="form-control" type="password" name="password" ngModel>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
