@@ -1,0 +1,20 @@
+<h2>Form with multiple errors</h2>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label class="form-label" for="usernameInput">Username*</label>
+    <input
+      id="usernameInput"
+      class="form-control"
+      [class.is-invalid]="username.touched && username.invalid"
+      type="text"
+      name="username"
+      formControlName="username"
+    />
+    <ng-container *ngFor="let error of getErrorMessages(username)">
+      <p class="invalid-feedback" *ngIf="username.touched && username.invalid">{{ error }}</p>
+    </ng-container>
+  </div>
+
+  <button type="submit" class="btn btn-primary mb-2">Submit</button>
+</form>

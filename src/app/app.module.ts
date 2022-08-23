@@ -8,6 +8,7 @@ import { FormTemplate2Component } from './form-template2/form-template2.componen
 import { FormReactiveComponent } from './form-reactive/form-reactive.component';
 import { FormReactiveValidationComponent } from './form-reactive-validation/form-reactive-validation.component';
 import { FormRegistrationComponent } from './form-registration/form-registration.component';
+import { FormMultierrorComponent } from './form-multierror/form-multierror.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormRegistrationComponent } from './form-registration/form-registration
     FormTemplate2Component,
     FormReactiveComponent,
     FormReactiveValidationComponent,
-    FormRegistrationComponent
+    FormRegistrationComponent,
+    FormMultierrorComponent
   ],
   imports: [
     BrowserModule,

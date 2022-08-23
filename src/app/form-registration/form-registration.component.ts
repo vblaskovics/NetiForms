@@ -51,16 +51,16 @@ export class FormRegistrationComponent implements OnInit {
         '',
         [
           Validators.required,
-          createRegexValidator(/\d/, 'noNumberInPassword'),
-          createRegexValidator(/.{8,}/, 'minLengthPassword'),
+          // createRegexValidator(/\d/, 'noNumberInPassword'),
+          // createRegexValidator(/.{8,}/, 'minLengthPassword'),
         ],
       ],
       passwordre: [
         '',
         [
           Validators.required,
-          createRegexValidator(/\d/, 'noNumberInPassword'),
-          createRegexValidator(/.{8,}/, 'minLengthPassword'),
+          // createRegexValidator(/\d/, 'noNumberInPassword'),
+          // createRegexValidator(/.{8,}/, 'minLengthPassword'),
         ],
       ],
       terms: [null, Validators.required],
@@ -72,16 +72,12 @@ export class FormRegistrationComponent implements OnInit {
   }
 
   validatePasswords() {
-    let password = this.myForm.get('password');
-    let passwordre = this.myForm.get('passwordre');
-    if (!password || !passwordre ) return;
-    let isPasswordsSame = password?.value !== passwordre?.value;
-    if (isPasswordsSame) {
-      password.errors!['invalidPassword'] = true;
-      passwordre.errors!['invalidPassword'] = true;
+    let password = this.myForm.get('password') as FormControl;
+    let passwordre = this.myForm.get('passwordre') as FormControl;
+    if (password.value !== passwordre.value) {
+      passwordre.setErrors({'invalidPassword':true})
     } else {
-      delete password.errors!['invalidPassword'];
-      delete passwordre.errors!['invalidPassword'];
+      passwordre.setErrors(null);
     }
   }
 
@@ -89,6 +85,8 @@ export class FormRegistrationComponent implements OnInit {
 
   onSubmit(value: string): void {
     console.log('Submitted:', value);
+    debugger
+    this.myForm.updateValueAndValidity();
   }
 
   getControl(controlName: string): FormControl {

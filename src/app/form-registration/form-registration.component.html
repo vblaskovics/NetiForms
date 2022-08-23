@@ -149,7 +149,8 @@
     <input
       class="form-control"
       [class.error]="
-        getControl('passwordre').invalid && getControl('passwordre').touched
+      getControl('passwordre').hasError('invalidPassword') &&
+      getControl('password').touched
       "
       type="password"
       id="passwordreInput"
@@ -157,35 +158,19 @@
     />
     <div
       *ngIf="
-        getControl('passwordre').hasError('required') &&
-        getControl('passwordre').touched
-      "
-      class="is-error"
-    >
-      Password is required
-    </div>
-    <div
-      *ngIf="
         getControl('passwordre').hasError('invalidPassword') &&
-        getControl('passwordre').touched
+        getControl('password').touched
       "
       class="is-error"
     >
       Passwords should be the same!
     </div>
-    <div
-      *ngIf="
-        getControl('passwordre').hasError('noNumberInPassword') &&
-        getControl('passwordre').touched
-      "
-      class="is-error"
-    >
-      Passwords should contain number!
-    </div>
   </div>
   <!-- TERMS -->
   <div class="mb-3">
-    <label class="form-label" for="termsInput">Agree to Terms and Conditions</label>
+    <label class="form-label" for="termsInput"
+      >Agree to Terms and Conditions</label
+    >
     <input
       [class.error]="getControl('terms').invalid && getControl('terms').touched"
       type="checkbox"
@@ -200,7 +185,5 @@
     </div>
   </div>
 
-  <button class="btn btn-primary" [disabled]="myForm.invalid" type="submit">
-    Submit
-  </button>
+  <button class="btn btn-primary" type="submit">Submit</button>
 </form>
